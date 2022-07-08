@@ -29,11 +29,14 @@ function App() {
   }
 
   function filterPlaneteers(searchParameters = ""){
-    setSearch(searchParameters)
-    searchParameters = searchParameters;
-    const searchResults = planeteers.filter((planeteer) => planeteer.name.toLowerCase().includes(searchParameters) || planeteer.bio.toLowerCase().includes(searchParameters) );
-    console.log(searchParameters, searchResults)
-    setTheSearchResults(searchResults);
+    if(searchParameters !== ""){
+      setSearch(searchParameters)
+      const searchResults = planeteers.filter((planeteer) => planeteer.name.toLowerCase().includes(searchParameters) || planeteer.bio.toLowerCase().includes(searchParameters) );
+      setTheSearchResults(searchResults);
+    }
+    else{
+      setTheSearchResults(planeteers)
+    }
   }
 
   return (
@@ -41,7 +44,7 @@ function App() {
       <Header />
       <SearchBar search={search} filterPlaneteers={filterPlaneteers} />
       <RandomButton />
-      <PlaneteersContainer toggleQuote={toggleQuote} planeteers={planeteers} searchResults={theSearchResults}/>
+      <PlaneteersContainer search={search} filterPlaneteers={filterPlaneteers} toggleQuote={toggleQuote} searchResults={theSearchResults}/>
     </div>
   );
 }

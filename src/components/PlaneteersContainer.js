@@ -1,10 +1,10 @@
 import React from "react";
 import Planeteer from "./Planeteer";
 
-function PlaneteersContainer({planeteers, toggleQuote, searchResults}) {
+function PlaneteersContainer({toggleQuote, searchResults, filterPlaneteers, search}) {
   return (
     <ul className="cards">
-      {searchResults.length === 0 ? planeteers.map((planeteer) => <Planeteer toggleQuote={toggleQuote} planeteer={planeteer} />) : searchResults.map((planeteer) => <Planeteer toggleQuote={toggleQuote} planeteer={planeteer} />)}
+      {searchResults.length === 0 && search ==="" ? filterPlaneteers() : searchResults.map((planeteer) => <Planeteer toggleQuote={toggleQuote} planeteer={planeteer} />)}
     </ul>
   );
 }
