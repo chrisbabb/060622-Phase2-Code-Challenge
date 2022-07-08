@@ -1,22 +1,24 @@
 import React from "react";
 
-function Planeteer() {
+function Planeteer({planeteer, toggleQuote}) {
+  const {bio, fromUSA, name, pictureUrl, quote, twitter, quoteToggle} = planeteer;
   return (
     <li className="cards__item">
       <div className="card">
         <img
-          src={"RENDER IMAGE"}
-          alt={"RENDER PERSON NAME"}
+          src={pictureUrl}
+          alt={name}
           className="card__image"
+          onClick={() => toggleQuote(planeteer)}
         />
         <div className="card__content">
-          <div className="card__title">{"RENDER NAME"}</div>
-          <p className="card__text">{"CONDITIONALLY RENDER BIO OR QUOTE"}</p>
+          <div className="card__title">{name}</div>
+          <p className="card__text">{quoteToggle ? bio : quote}</p>
           <div className="card__detail">
-            <p>{"RENDER TWITTER HANDLE"}</p>
+            <p>{twitter}</p>
             <p>
               {
-                "CONDITIONALLY RENDER WHETHER THE PERSON IS USA-BASED OR WORKING OVERSEAS"
+                fromUSA ? "USA-Based" : "Working overseas"
               }
             </p>
           </div>

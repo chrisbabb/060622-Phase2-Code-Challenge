@@ -1,10 +1,10 @@
 import React from "react";
 import Planeteer from "./Planeteer";
 
-function PlaneteersContainer() {
+function PlaneteersContainer({planeteers, toggleQuote, searchResults}) {
   return (
     <ul className="cards">
-      {/* render a list of <Planeteer> components in here */}
+      {searchResults.length === 0 ? planeteers.map((planeteer) => <Planeteer toggleQuote={toggleQuote} planeteer={planeteer} />) : searchResults.map((planeteer) => <Planeteer toggleQuote={toggleQuote} planeteer={planeteer} />)}
     </ul>
   );
 }
